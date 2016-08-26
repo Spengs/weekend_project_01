@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Employee Data</title>
+    <script type="text/javascript" src="../vendors/angular.min.js"></script>
+    <script type="text/javascript" src="../scripts/app.js"></script>
+    <script type="text/javascript" src="../scripts/controllers/employeeController.js"></script>
+    <link rel="stylesheet" href="../styles/style.css" />
+
+  </head>
+  <body ng-app="myApp">
+    <h1>Employee Info</h1>
+      <div ng-controller="employeeController">
+        <form id="employeeinfo">
+          <label for=""for="employeefirstname">Employee First Name:</label>
+          <input ng-model="employee.firstname" type="text" id="employeefirstname" name="employeefirstname" />
+
+          <label for="employeelastname">Employee Last Name:</label>
+          <input ng-model="employee.lastname" type="text" id="employeelastname" name="employeelastname" />
+
+          <label for="employeenumber">Employee Number:</label>
+          <input ng-model="employee.number" type="text" id="employeenumber" name="employeenumber" />
+
+          <label for="employeetitle">Employee Title:</label>
+          <input ng-model="employee.title" type="text" id="employeetitle" name="employeetitle" />
+
+          <label for="employeesalary">Employee Salary:</label>
+          <input ng-model="employee.salary" type="text" id="employeesalary" name="employeesalary" />
+
+          <button id="employeeSubmit" ng-click="saveEmployee()">Submit</button>
+
+        </form>
+
+        <div id="container">
+          Salary Cost per Month: ${{totalSalary}}
+          <h2>Employees</h2>
+            <div class="employeeList" ng-repeat="employee in employees">
+              <ul>
+                <li>
+                  Name: {{ employee.firstname}} {{employee.lastname}} <br />
+                  Employee Number: {{employee.number}} <br />
+                  Title: {{employee.title}} <br />
+                  Salary: {{employee.salary}}
+                  <button ng-click="remove($index)">Delete</button>
+                </li>
+              </ul>
+            </div>
+        </div>
+    </div>
+  </body>
+</html>

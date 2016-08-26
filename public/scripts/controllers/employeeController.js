@@ -28,13 +28,16 @@ myApp.controller("employeeController", ["$scope", function($scope) {
     }
 
     $scope.remove=function($index){
-      var myEl = angular.element( document.querySelector( 'li' ) );
-                  myEl.remove();
-                  // if($scope.employees == []){
-                  //   $scope.totalSalary = 0;
-                  // }
-      $scope.saveEmployee();
-}
+      // var myEl = angular.element( document.querySelector( 'li' ) );
+      //             myEl.remove();
+      $scope.employees.splice($index,1);
+      $scope.totalSalary = $scope.totalSalary -= $scope.monthlySalary;
+            }
+      if($scope.employees.length == 0){
+        $scope.totalSalary = 0;
+
+      }
+
 
 
 }]);
